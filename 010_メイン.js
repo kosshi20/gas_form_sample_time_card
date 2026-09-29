@@ -59,7 +59,10 @@ function doForm(e) {
  */
 function sendErrorToSlack(props, err) {
   const url = props[CONFIG.PROPS.ERR_SLACK_WEBHOOK_URL];
-  if (!url) return;
+
+  if (!url) {
+    return;
+  }
 
   const message = `【タイムカード_サンプル】エラーが発生しました:\n${err.stack}`;
 

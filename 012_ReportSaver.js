@@ -25,7 +25,7 @@ const ReportSaver = {
    * @param {Config} config
    */
   endTime(config) {
-     // 日付を配列で取得する関数を呼び出す
+    // 日付を配列で取得する関数を呼び出す
     const dateValues = this._getDateValues(config);
 
     for (let i = 0; i < dateValues.length; i++) {
@@ -33,7 +33,7 @@ const ReportSaver = {
       const day = Number(dateValues[i]);
 
       if (day === config.d) {
-        // 開始時間を入れる
+        // 終了時間を入れる
         config.sheet.getRange(config.dataStartRow + i, config.colMap.END_TIME + 1).setValue(config.time);
         return;
       }
@@ -69,8 +69,8 @@ const ReportSaver = {
     // 合計欄を起点として表の最終行を取得
     let tableLastRow = config.sheet.getRange(totalRow, config.colMap.DATE + 1).getNextDataCell(SpreadsheetApp.Direction.UP).getRow();
 
+    // 表の最終行が表の最初の行より上の場合は、合計欄の行の前の行を表の最終行にする
     if (tableLastRow <= config.dataStartRow) {
-      // 表の最終行が表の最初の行より上の場合は、合計欄の行の前の行を表の最終行にする
       tableLastRow = totalRow - 1;
     }
 

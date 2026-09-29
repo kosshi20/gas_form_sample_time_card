@@ -25,7 +25,7 @@ const ReportParser = {
     // 現在の日を取得
     config.d = config.now.getDate();
     // 現在時刻を取得
-    config.time =  Utilities.formatDate(config.now, "Asia/Tokyo", "HH:mm");
+    config.time = Utilities.formatDate(config.now, "Asia/Tokyo", "HH:mm");
   },
 
 
@@ -54,8 +54,8 @@ const ReportParser = {
 
       for (const [key, value] of Object.entries(CONFIG.HEADER.RECORD)) {
         // タイトル名が、連結した見出しの中に含まれているか確認
+        // 該当のタイトルがあれば、そのタイトルの列が何番目かインデックス番号にしてオブジェクトにする
         if (combinedHeader.includes(value)) {
-          // 該当のタイトルがあれば、そのタイトルの列が何番目かインデックス番号にしてオブジェクトにする
           map[key] = colIndex;
         }
       }
